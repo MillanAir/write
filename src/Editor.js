@@ -15,6 +15,8 @@ import '../node_modules/nprogress/nprogress.css';
 import swal from 'sweetalert';
 import '../node_modules/sweetalert/dist/sweetalert.css';
 
+import WebFont from 'webfontloader';
+
 let numberTextToInt = {
   "one": 1,
   "fifteen": 15,
@@ -31,7 +33,8 @@ let secondsToHms = (d) => {
   return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
 }
 
-class Editor extends Component {
+
+class Editor extends Component {  
   
   constructor(props) {
     super(props);
@@ -56,7 +59,7 @@ class Editor extends Component {
       timeSinceLastEdit: 0,
       content: value
     });
-  }
+  }  
 
   generateSavedArticle(content) {
     let savedArticle = {};
@@ -157,7 +160,14 @@ class Editor extends Component {
     this.loadInterval = false;
   }
 
+  
+
   render() {
+    WebFont.load({
+      google: {
+        families: ['Monospace', 'Inconsolata']
+      }
+    });
     return (
       <div className="editorContainer fadeIn">
         <Link to="/" className="back">Back</Link>
